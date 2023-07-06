@@ -1,43 +1,57 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aamajane <aamajane@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/06 16:14:19 by aamajane          #+#    #+#              #
+#    Updated: 2023/07/06 16:14:20 by aamajane         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME = webserv
+NAME	=	webserv
 
-CC = clang++
+CC		=	c++
 
-FLAGS = --std=c++98 -Wall -Wextra -Werror -fsanitize=address 
+CFLAGS	=	-Wall -Wextra -Werror -Wshadow -std=c++98
 
-SRCS = src/webserv.cpp \
-	   src/utils.cpp \
-	   src/configuration/Location.cpp \
-	   src/configuration/ServerParser.cpp \
-	   src/configuration/ConfigServer.cpp \
-	   src/networking/ManageServers.cpp \
-	   src/networking/Client.cpp \
-	   src/request/Request.cpp \
-	   src/response/Response.cpp \
-	   src/response/MimeTypes.cpp \
-	   src/response/methods/Get.cpp \
-	   src/response/methods/Post.cpp \
-	   src/response/methods/Delete.cpp \
-	   src/response/Cgi.cpp
+RM		=	rm -rf
 
-OBJS = $(SRCS:.cpp=.o)
+OBJS	=	$(SRCS:.cpp=.o)
 
-all: $(NAME)
+SRCS	=	src/webserv.cpp \
+			src/utils.cpp \
+			src/configuration/Location.cpp \
+			src/configuration/ServerParser.cpp \
+			src/configuration/ConfigServer.cpp \
+			src/networking/ManageServers.cpp \
+			src/networking/Client.cpp \
+			src/request/Request.cpp \
+			src/response/Response.cpp \
+			src/response/MimeTypes.cpp \
+			src/response/methods/Get.cpp \
+			src/response/methods/Post.cpp \
+			src/response/methods/Delete.cpp \
+			src/response/Cgi.cpp
 
-$(NAME): $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-	@mkdir -p www/uploads
 
-.cpp.o: ${SRCS}
-	@$(CC) $(FLAGS) -c $< -o $@
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+			@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+			@mkdir -p www/uploads
+
+.cpp.o:		${SRCS}
+			@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+			@(RM) $(OBJS)
 
-fclean: clean
-	@rm -f $(NAME)
-	@rm -rf www/uploads
+fclean:		clean
+			@(RM) $(NAME)
+			@(RM) www/uploads
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re run
+.PHONY:		all clean fclean re
