@@ -95,8 +95,8 @@ bool	errorCharQuery(char c)
 bool	checkIsToken(u_int8_t c)
 {
 	if (c == '!' || (c >= '#' && c <= '\'') || c == '*'|| c == '+' || c == '-'  || c == '.' || \
-	   (c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= '^' && c <= '`') || \
-	   (c >= 'a' && c <= 'z') || c == '|')
+		(c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= '^' && c <= '`') || \
+		(c >= 'a' && c <= 'z') || c == '|')
 		return true;
 
 	return false;
