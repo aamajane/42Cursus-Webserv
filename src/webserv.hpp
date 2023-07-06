@@ -1,41 +1,41 @@
 #pragma once
 
-# define CLIENT_MAX_BODY_SIZE	3000000
-# define MAX_URI_LENGTH			2048
-# define TIMEOUT_CONNECTION		60
-# define MSG_BUF				40000
-# define BUF_SIZE				1024
+#define CLIENT_MAX_BODY_SIZE	3000000
+#define MAX_URI_LENGTH			2048
+#define TIMEOUT_CONNECTION		60
+#define MSG_BUF					40000
+#define BUF_SIZE				1024
 
-# include <iostream>
-# include <fcntl.h>
-# include <cstring>
-# include <string> 
-# include <dirent.h>
-# include <cstdlib>
-# include <fstream>
-# include <sstream>
-# include <cctype>
-# include <ctime>
-# include <cstdarg>
-# include <map>
-# include <vector>
-# include <algorithm>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <sys/stat.h>
-# include <sys/time.h>
-# include <unistd.h>
-# include <signal.h>
-# include <sys/socket.h>
-# include <netinet/in.h>
-# include <sys/select.h>
-# include <arpa/inet.h>
-# include <regex>
-# include <unordered_set>
-# include "response/MimeTypes.hpp"
-# include "configuration/Location.hpp"
-# include "configuration/ServerParser.hpp"
-# include "configuration/ConfigServer.hpp"
+#include <iostream>
+#include <fcntl.h>
+#include <cstring>
+#include <string> 
+#include <dirent.h>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <cctype>
+#include <ctime>
+#include <cstdarg>
+#include <map>
+#include <vector>
+#include <algorithm>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <sys/select.h>
+#include <arpa/inet.h>
+#include <regex>
+#include <unordered_set>
+#include "response/MimeTypes.hpp"
+#include "configuration/Location.hpp"
+#include "configuration/ServerParser.hpp"
+#include "configuration/ConfigServer.hpp"
 
 std::string		skipWhitespaceBeginEnd(std::string);
 std::string		skip(std::string, std::string);

@@ -6,7 +6,7 @@
 #    By: aamajane <aamajane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/06 16:14:19 by aamajane          #+#    #+#              #
-#    Updated: 2023/07/06 16:14:20 by aamajane         ###   ########.fr        #
+#    Updated: 2023/07/06 16:28:06 by aamajane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	webserv
 
 CC		=	c++
 
-CFLAGS	=	-Wall -Wextra -Werror -Wshadow -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 RM		=	rm -rf
 
@@ -39,18 +39,18 @@ SRCS	=	src/webserv.cpp \
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 			@mkdir -p www/uploads
 
-.cpp.o:		${SRCS}
-			@$(CC) $(FLAGS) -c $< -o $@
+.cpp.o:
+			@${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}
 
 clean:
-			@(RM) $(OBJS)
+			@$(RM) $(OBJS)
 
 fclean:		clean
-			@(RM) $(NAME)
-			@(RM) www/uploads
+			@$(RM) $(NAME)
+			@$(RM) www/uploads
 
 re:			fclean all
 
