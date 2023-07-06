@@ -54,7 +54,7 @@ void Location::setMethod(std::string value, bool check) {
             this->method.push_back("DELETE");
             value.erase(pos, 6);
         }
-        value = skipWhitespaceBeginAnd(value);
+        value = skipWhitespaceBeginEnd(value);
     }
     else
         this->method.push_back(value);
@@ -67,7 +67,7 @@ const std::string& Location::getRoot() const {
 void Location::setRoot(std::string& value) {
     value = skip(value, "root");
     if (value[value.length() - 1] != '/')
-        parse_error("root");
+        parseError("root");
     root = value;
 }
 
@@ -78,7 +78,7 @@ const std::string& Location::getUpload() const {
 void Location::setUpload(std::string& value) {
     value = skip(value, "upload");
     if (value[value.length() - 1] != '/')
-        parse_error("upload");
+        parseError("upload");
     this->upload = value;
 }
 
@@ -89,7 +89,7 @@ const std::string& Location::getAutoindex() const {
 void Location::setAutoindex(std::string& value) {
     value = skip(value, "autoindex");
     if (value != "on" && value != "off")
-        parse_error("autoindex");
+        parseError("autoindex");
     this->autoindex = value;
 }
 
@@ -127,7 +127,7 @@ const std::string& Location::getLocation() const {
 
 void Location::setLocation(std::string& value){
     if (value[0] != '/')
-        parse_error("location");
+        parseError("location");
     this->location_path = value;
 }
 
@@ -135,7 +135,7 @@ void    Location::setCgi(std::string & value)
 {
     value = skip(value, "cgi");
     if (value != "on" && value != "off")
-        parse_error("cgi");
+        parseError("cgi");
     this->cgi = value;
 }
 

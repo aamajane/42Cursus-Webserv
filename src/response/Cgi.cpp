@@ -50,11 +50,11 @@ void	Response::handleCGI()
 		env["PATH_TRANSLATED"] = this->fullPath;
 		env["REQUEST_METHOD"] = this->method;
 		env["QUERY_STRING"] = this->request.getQuery();
-		env["HTTP_COOKIE"] = skipWhitespaceBeginAnd(this->request.getHeader("Cookie"));
+		env["HTTP_COOKIE"] = skipWhitespaceBeginEnd(this->request.getHeader("Cookie"));
 		if (this->method == "POST")
 		{
-			env["CONTENT_TYPE"] = skipWhitespaceBeginAnd(this->request.getHeader("Content-Type"));
-			env["CONTENT_LENGTH"] = skipWhitespaceBeginAnd(this->request.getHeader("Content-Length"));
+			env["CONTENT_TYPE"] = skipWhitespaceBeginEnd(this->request.getHeader("Content-Type"));
+			env["CONTENT_LENGTH"] = skipWhitespaceBeginEnd(this->request.getHeader("Content-Length"));
 		}
 
 		// create pipe for the cgi output

@@ -137,7 +137,7 @@ const std::string &                             Request::getNameFileBody() const
 
 void                                            Request::setHeader(std::string & key, std::string & value)
 {
-    key = skipWhitespaceBeginAnd(key);
+    key = skipWhitespaceBeginEnd(key);
     this->requestHeaders[key] = value;
 }
 
@@ -152,7 +152,7 @@ bool                                            Request::openFile()
     this->nameFileBody = "/tmp/" + generateRandomFileName();
 
     if (this->requestHeaders.count("Content-Type"))
-        this->nameFileBody += "." + mime.getExeFile(skipWhitespaceBeginAnd(this->requestHeaders["Content-Type"]));
+        this->nameFileBody += "." + mime.getExeFile(skipWhitespaceBeginEnd(this->requestHeaders["Content-Type"]));
     
     this->fdFileBody = open(this->nameFileBody.c_str(), O_WRONLY | O_APPEND | O_CREAT, 0644);
     if (this->fdFileBody < 0)
@@ -189,7 +189,7 @@ bool                                            Request::handleHeaders()
     }
     if (this->requestHeaders.count("Transfer-Encoding"))
     {
-        std::string encoding = skipWhitespaceBeginAnd(this->requestHeaders["Transfer-Encoding"]);
+        std::string encoding = skipWhitespaceBeginEnd(this->requestHeaders["Transfer-Encoding"]);
         if (encoding == "chunked")
             this->chunkedFlag = true;
         else
@@ -210,7 +210,7 @@ bool                                            Request::handleHeaders()
 
     if (this->requestHeaders.count("Host"))
     {
-        std::string _host = skipWhitespaceBeginAnd(this->requestHeaders["Host"]);
+        std::string _host = skipWhitespaceBeginEnd(this->requestHeaders["Host"]);
         std::string _port;
         
         try
@@ -754,7 +754,7 @@ void                                   Request::printRequest()
 std::string Request::getNewFileName(std::string path)
 {
     std::string file_name_never_exist = path;
-    std::string exe_flie = this->mime.getExeFile(skipWhitespaceBeginAnd(this->getHeader("Content-Type")));
+    std::string exe_flie = this->mime.getExeFile(skipWhitespaceBeginEnd(this->getHeader("Content-Type")));
     if (exe_flie.empty())
     {
         this->setCodeError(415);

@@ -6,7 +6,7 @@ void ServerParser::setPort(std::string& value) {
     for (size_t i = 0; i < value.length(); i++)
     {
         if (!std::isdigit(value[i]))
-            parse_error("port");
+            parseError("port");
     }
     port = value;
 }
@@ -22,7 +22,7 @@ void ServerParser::setHost(std::string& value) {
     std::regex ip_regex("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
     
     if (!std::regex_match(value, ip_regex))
-        parse_error("host");
+        parseError("host");
 
     this->host = value;
 }
@@ -59,22 +59,22 @@ void ServerParser::setErrorPages(std::string & value) {
     }
     catch(const std::exception& e)
     {
-        parse_error("error page");
+        parseError("error page");
     }
     
-    value = skipWhitespaceBeginAnd(value);
+    value = skipWhitespaceBeginEnd(value);
 
     if (codeStatus.empty() || value.empty())
-        parse_error("page_error");
+        parseError("page_error");
 
     for (size_t i = 0; i < codeStatus.length(); i++)
     {
         if (!isdigit(codeStatus[i]))
-            parse_error("(error page) code status");
+            parseError("(error page) code status");
     }
     short code = std::stoi(codeStatus);
     if (!isValidHTTPStatusCode(code))
-        parse_error("(error page) code status");
+        parseError("(error page) code status");
     
     try
     {
@@ -87,13 +87,13 @@ void ServerParser::setErrorPages(std::string & value) {
     }
     catch(const std::exception)
     {
-        parse_error("(error page) code status"); 
+        parseError("(error page) code status"); 
     }
 
     int fd = open(value.c_str(), O_RDONLY);
 
     if (fd < 0)
-        parse_error("error page");
+        parseError("error page");
     close(fd);
     error_pages[code] = value;
 }
@@ -109,7 +109,7 @@ void ServerParser::setClientMaxBodySize(std::string& value) {
     for (size_t i = 0; i < value.size(); i++)
     {
         if (!std::isdigit(value[i]))
-            parse_error("client max body size");
+            parseError("client max body size");
     }
 
     try
@@ -118,7 +118,7 @@ void ServerParser::setClientMaxBodySize(std::string& value) {
     }
     catch(const std::exception)
     {
-        parse_error("client max body size");
+        parseError("client max body size");
     }
     
 }
@@ -294,23 +294,23 @@ std::vector<ServerParser> ServerParser::get_server(std::string filename){
                             if (loc.getMethod().empty())
                                 loc.setMethod("GET", false);
                             if  (loc.getRoot().empty())
-                                parse_error("config file");
+                                parseError("config file");
                             s.set_locations(loc);
                             break;
                         }
                         else if (!key.empty())
-                            parse_error("config file");
+                            parseError("config file");
                     }
                     key.clear();
                     value.clear();
                 }
                 else if (!key.empty())
-                    parse_error("config file");
+                    parseError("config file");
             }
             
         }
         else if (!key.empty())
-            parse_error("config file");
+            parseError("config file");
     }
     
     checkServersAndLocations(vecServers);
@@ -322,12 +322,12 @@ void    ServerParser::checkServersAndLocations(std::vector<ServerParser > vecSer
 {
     for (size_t i = 0; i < vecServers.size(); i++){
         if (vecServers[i].getPort().empty() || vecServers[i].getHost().empty() || vecServers[i].getServerName().empty())
-            parse_error("config file");
+            parseError("config file");
         if (vecServers[i].get_locations().empty())
-            parse_error("config file");
+            parseError("config file");
         for (size_t j = 0; j < vecServers[i].get_locations().size(); j++){
             if (vecServers[i].get_locations()[j].getRoot().empty())
-                parse_error("config file");
+                parseError("config file");
         }
     }
 }
