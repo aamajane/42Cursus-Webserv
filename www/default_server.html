@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("https://virtualbackgrounds.site/wp-content/uploads/2020/09/organized-server-room-1024x576.jpeg") no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .image-wrapper {
+            text-align: center;
+            width: 30%;
+            margin-top: 100px;
+        }
+        a {
+            text-decoration: none;
+            color: cornsilk;
+        }
+        h1 {
+            padding-top: 30px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media screen and (max-width: 768px) {
+            .image-wrapper {
+                width: 45%;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .image-wrapper {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="https://cdn.intra.42.fr/users/0040ace8d0e79f4c834c959166b12a67/ybouali.jpg" alt="ybouali" width="300" height="300">
+            <br>
+            <h1><a href="https://profile.intra.42.fr/users/ybouali" target="_blank">Ybouali</a></h1>
+        </div>
+        <div class="image-wrapper">
+            <img src="https://cdn.intra.42.fr/users/0da508eb480624e1984fd8c1f2c6cf00/zezzine.jpg" alt="zezzine" width="300" height="300">
+            <br>
+            <h1><a href="https://profile.intra.42.fr/users/zezzine" target="_blank">Zezzine</a></h1>
+        </div>
+        <div class="image-wrapper">
+            <img src="https://cdn.intra.42.fr/users/6e08f820a216e1a2a90e377609109946/aamajane.jpg" alt="aamajane" width="300" height="300">
+            <br>
+            <h1><a href="https://profile.intra.42.fr/users/aamajane" target="_blank">Aamajane</a></h1>
+        </div>
+    </div>
+</body>
+</html>
