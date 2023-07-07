@@ -1,43 +1,38 @@
-# pragma once
+#pragma once
 
-# include "../webserv.hpp"
-# include "../request/Request.hpp"
-# include "../response/Response.hpp"
+#include "../webserv.hpp"
+#include "../request/Request.hpp"
+#include "../response/Response.hpp"
 
 class Client
 {
-    private:
-        int                         clientSocket;
-        time_t                      lastMsgTime;
+	private:
+		int		clientSocket;
+		time_t	lastMsgTime;
 
-    public:
-        Client();
+	public:
+		ConfigServer	server;
+		Request			request;
+		Response		response;
 
-        Client(const ConfigServer &);
-        
-        ~Client();
-        
-        Request         request;
-        ConfigServer    server;
-        Response        response;
-        
-        void                        buildResponse();
-        
-        // ? ----------------------------- getters -----------------------------------
+		Client();
+		Client(const ConfigServer&);
+		~Client();
 
-        int                     getClientSocket() const;
+		void	clear();
 
-        time_t                  getLastMsgTime() const;
+		// ----------------------------- Getters -----------------------------------
 
-        // ? ----------------------------- setters -----------------------------------
+		int		getClientSocket() const;
+		time_t	getLastMsgTime() const;
 
-        void                    setClientSocket(int);
+		// ----------------------------- Setters -----------------------------------
 
-        void                    setLastMsgTime(time_t);
+		void	setClientSocket(int);
+		void	setLastMsgTime(time_t);
 
-        // ? Methodes ----------------------------------------------------------------
+		// ----------------------------- Methodes -----------------------------------
 
-        void                    updateTime();
-
-        void                    clear();
+		void	buildResponse();
+		void	updateTime();
 };
