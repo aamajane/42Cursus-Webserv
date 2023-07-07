@@ -1,7 +1,7 @@
 #include "Location.hpp"
 
 Location::Location()
-	: location_path(), method(), root(), upload(), index(), autoindex(), cgi(), redirection()
+	: locationPath(), method(), root(), upload(), index(), autoindex(), cgi(), redirection()
 {
 }
 
@@ -14,7 +14,7 @@ Location& Location::operator=(const Location& other)
 {
 	if (this != &other)
 	{
-		this->location_path = other.location_path;
+		this->locationPath = other.locationPath;
 		this->method = other.method;
 		this->root = other.root;
 		this->upload = other.upload;
@@ -33,7 +33,7 @@ Location::~Location()
 
 void    Location::clear()
 {
-	this->location_path.clear();
+	this->locationPath.clear();
 	this->method.clear();
 	this->root.clear();
 	this->upload.clear();
@@ -45,7 +45,7 @@ void    Location::clear()
 
 // ----------------------------- Getters -----------------------------------
 
-const std::string&				Location::getLocation() const { return this->location_path; }
+const std::string&				Location::getLocationPath() const { return this->locationPath; }
 
 const std::vector<std::string>&	Location::getMethod() const { return this->method; }
 
@@ -64,12 +64,12 @@ const std::string&				Location::getRedirection() const { return this->redirectio
 // ----------------------------- Setters -----------------------------------
 
 
-void Location::setLocation(std::string& value)
+void Location::setLocationPath(std::string& value)
 {
 	if (value[0] != '/')
 		parseError("location");
 
-	this->location_path = value;
+	this->locationPath = value;
 }
 
 void	Location::setMethod(std::string value, bool check)
@@ -161,7 +161,7 @@ void Location::setRedirection(std::string& value)
 
 void	Location::printLocationInfo()
 {
-	std::cout << "LOCATION        (" << this->getLocation() << ") \n";
+	std::cout << "LOCATION        (" << this->getLocationPath() << ") \n";
 
 	for (size_t i = 0; i < this->getMethod().size(); i++)
 		std::cout << "METHOD          (" << this->getMethod()[i] << ") \n";

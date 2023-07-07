@@ -5,7 +5,7 @@
 class Location
 {
 	private:
-		std::string					location_path;
+		std::string					locationPath;
 		std::vector<std::string>	method;
 		std::string					root;
 		std::string					upload;
@@ -24,7 +24,7 @@ class Location
 
 		// ----------------------------- Getters -----------------------------------
 
-		const std::string&				getLocation() const;
+		const std::string&				getLocationPath() const;
 		const std::vector<std::string>&	getMethod() const;
 		const std::string&				getRoot() const;
 		const std::string&				getUpload() const;
@@ -35,7 +35,7 @@ class Location
 
 		// ----------------------------- Setters -----------------------------------
 
-		void	setLocation(std::string&);
+		void	setLocationPath(std::string&);
 		void	setMethod(std::string, bool);
 		void	setRoot(std::string&);
 		void	setUpload(std::string&);

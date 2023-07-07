@@ -13,7 +13,7 @@ int	main(int ac, char **av)
 	signal(SIGPIPE, SIG_IGN);
 
 	filename = (ac == 2) ? av[1] : "config/webserv.conf";
-	servers = serversFromConfigFile.get_server(filename);
+	servers = serversFromConfigFile.parseServer(filename);
 
 	master.setupServers(master.getInfoServer(servers));
 	master.startServers();

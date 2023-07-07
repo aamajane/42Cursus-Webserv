@@ -218,16 +218,16 @@ void	Response::isLocationMatched()
 	for (std::vector<Location >::iterator it = locations.begin(); it != locations.end(); it++)
 	{
 		// if the requested location is matched, set it to the response location
-		if (it->getLocation() == requestedLocation)
+		if (it->getLocationPath() == requestedLocation)
 		{
 			isMatched = true;
 			this->location = *it;
 
 			// check if the requested location ends with a slash
-			if (pos == std::string::npos && this->location.getLocation() != "/")
+			if (pos == std::string::npos && this->location.getLocationPath() != "/")
 			{
 				this->statusCode = 301;
-				this->fullPath = this->location.getLocation();
+				this->fullPath = this->location.getLocationPath();
 				this->fullPath.append("/");
 				throw std::exception();
 			}
@@ -242,7 +242,7 @@ void	Response::isLocationMatched()
 		for (std::vector<Location >::iterator it = locations.begin(); it != locations.end(); it++)
 		{
 			// if the root location '/' is matched, set it to the response location
-			if (it->getLocation() == "/")
+			if (it->getLocationPath() == "/")
 			{
 				isMatched = true;
 				this->location = *it;
@@ -301,7 +301,7 @@ void	Response::isResourceExist()
 {
 	// set the full path to the requested path and replace the location path with the root path
 	this->fullPath = this->request.getPath();
-	this->fullPath.replace(0, this->location.getLocation().length(), this->location.getRoot());
+	this->fullPath.replace(0, this->location.getLocationPath().length(), this->location.getRoot());
 
 	// check if the requested resource exist
 	if (access(this->fullPath.c_str(), F_OK) == -1)

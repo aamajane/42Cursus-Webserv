@@ -5,13 +5,13 @@ ConfigServer::ConfigServer()
 {
 }
 
-ConfigServer::ConfigServer(std::string port, std::string host, std::string ServerName, std::vector<Location> _locationList, std::map<short, std::string> errorPages, unsigned long clientMaxBodySize)
+ConfigServer::ConfigServer(std::string port, std::string host, std::string ServerName, std::vector<Location> locationList, std::map<short, std::string> errorPages, unsigned long clientMaxBodySize)
 	: Port(), Host(), serverName(), errorPages(), clientMaxBodySize(), locationList()
 {
 	this->setPort(port);
 	this->setHost(host);
 	this->setServerName(ServerName);
-	this->locationList = _locationList;
+	this->locationList = locationList;
 	this->errorPages = errorPages;
 	this->clientMaxBodySize = clientMaxBodySize;
 	this->setFd(0);
@@ -88,7 +88,7 @@ void	ConfigServer::setClientMaxBodySize(unsigned long size)
 		this->clientMaxBodySize = CLIENT_MAX_BODY_SIZE;
 }
 
-void	ConfigServer::setLocationList(std::vector<Location> _locationList) { this->locationList = _locationList; }
+void	ConfigServer::setLocationList(std::vector<Location> locationList) { this->locationList = locationList; }
 
 void	ConfigServer::setFd(int fd) { this->Fd = fd; }
 

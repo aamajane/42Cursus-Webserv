@@ -42,7 +42,7 @@ void	Response::handleGetDirectory()
 	{
 		// if it doesn't, redirect the client to the same requested path with a slash at the end
 		this->statusCode = 301;
-		this->fullPath.replace(0, this->location.getRoot().length(), this->location.getLocation());
+		this->fullPath.replace(0, this->location.getRoot().length(), this->location.getLocationPath());
 		this->fullPath.append("/");
 		throw std::exception();
 	}
