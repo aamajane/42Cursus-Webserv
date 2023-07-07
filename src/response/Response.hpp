@@ -5,9 +5,9 @@
 
 class Response
 {
-    private:
+	private:
 		ConfigServer	server;
-        Request			request;
+		Request			request;
 		std::string		responseContent;
 		short			statusCode;
 		std::string		body;
@@ -22,13 +22,13 @@ class Response
 		pid_t			pid;
 		int				status;
 
-    public:
-		static MimeTypes	mime_type;
+	public:
+		static MimeTypes	mimeTypes;
 
-        Response();
-        ~Response();
+		Response();
+		~Response();
 
-        void	clear();
+		void	clear();
 
 		// ----------------------------- Getters -----------------------------------
 
@@ -48,7 +48,7 @@ class Response
 		pid_t				getPid() const;
 		int					getStatus() const;
 
-        // ----------------------------- Setters -----------------------------------
+		// ----------------------------- Setters -----------------------------------
 
 		void	setConfigServer(const ConfigServer&);
 		void	setRequest(const Request&);
@@ -66,7 +66,7 @@ class Response
 		void	setPid(const pid_t);
 		void	setStatus(const int);
 
-        // ----------------------------- Methodes -----------------------------------
+		// ----------------------------- Methodes -----------------------------------
 
 		void	buildResponse();
 		void	buildResponseContent();

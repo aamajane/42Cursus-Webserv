@@ -1,6 +1,6 @@
 #include "Response.hpp"
 
-MimeTypes Response::mime_type;
+MimeTypes Response::mimeTypes;
 
 Response::Response() :
 	responseContent(""),
@@ -20,13 +20,13 @@ Response::Response() :
 
 Response::~Response()
 {
-    this->clear();
+	this->clear();
 }
 
 void	Response::clear()
 {
-    this->server.clear();
-    this->request.clear();
+	this->server.clear();
+	this->request.clear();
 	this->responseContent.clear();
 	this->statusCode = 0;
 	this->body.clear();

@@ -4,13 +4,13 @@
 
 class MimeTypes
 {
-    private:
-        std::map<std::string, std::string>  mime_types;
+	private:
+		std::map<std::string, std::string>  mimeTypes;
 
-    public:
-        MimeTypes();
-        ~MimeTypes();
+	public:
+		MimeTypes();
+		~MimeTypes();
 
-        const std::string   getMimeType(const std::string&);
-        const std::string   getExeFile(const std::string&);
+		const std::string	getMimeType(const std::string&);
+		const std::string	getExeFile(const std::string&);
 };

@@ -67,7 +67,7 @@ void	Response::handlePostFile()
 	std::string path_to_upload_file = this->location.getUpload();
 
 	// check if the file type is supported
-	if (mime_type.getExeFile(skipWhitespaceBeginEnd(this->request.getHeader("Content-Type"))).empty())
+	if (mimeTypes.getExeFile(skipWhitespaceBeginEnd(this->request.getHeader("Content-Type"))).empty())
 	{
 		this->statusCode = 415;
 		throw std::exception();
