@@ -22,7 +22,7 @@ ConfigServer::ConfigServer(const ConfigServer& other)
 	*this = other;
 }
 
-ConfigServer & ConfigServer::operator=(const ConfigServer& other)
+ConfigServer& ConfigServer::operator=(const ConfigServer& other)
 {
 	if (this != &other)
 	{
@@ -57,19 +57,29 @@ void	ConfigServer::clear()
 // ----------------------------- Getters -----------------------------------
 
 uint16_t						ConfigServer::getPort() const { return this->Port; }
+
 std::string						ConfigServer::getHost() const { return this->Host; }
+
 std::string						ConfigServer::getServerName() const { return this->serverName; }
+
 std::map<short, std::string>	ConfigServer::getErrorPages() const { return this->errorPages; }
+
 unsigned long					ConfigServer::getClientMaxBodySize() const { return this->clientMaxBodySize; }
+
 std::vector<Location>			ConfigServer::getLocationList() const { return this->locationList; }
+
 int								ConfigServer::getFd() const { return this->Fd; }
 
 // ----------------------------- Setters -----------------------------------
 
 void	ConfigServer::setPort(std::string port) { this->Port = static_cast<uint16_t>(std::stoul(port)); }
+
 void	ConfigServer::setHost(std::string host) { this->Host = host; }
+
 void	ConfigServer::setServerName(std::string ServerName) { this->serverName = ServerName; }
+
 void	ConfigServer::setErrorPages(std::map<short, std::string> ErrorPages) { this->errorPages = ErrorPages; }
+
 void	ConfigServer::setClientMaxBodySize(unsigned long size)
 {
 	if (!size)
@@ -77,7 +87,9 @@ void	ConfigServer::setClientMaxBodySize(unsigned long size)
 	else
 		this->clientMaxBodySize = CLIENT_MAX_BODY_SIZE;
 }
+
 void	ConfigServer::setLocationList(std::vector<Location> _locationList) { this->locationList = _locationList; }
+
 void	ConfigServer::setFd(int fd) { this->Fd = fd; }
 
 // ----------------------------- Methodes -----------------------------------

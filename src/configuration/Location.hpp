@@ -1,50 +1,50 @@
-#ifndef LOCATION_HPP
-#define LOCATION_HPP
- 
+#pragma once
+
 #include "../webserv.hpp"
 
 class Location
-{    
-    public:
-        Location();
-        ~Location();
-        Location (const Location& other);
-        Location& operator=(const Location& other);
+{
+	private:
+		std::string					location_path;
+		std::vector<std::string>	method;
+		std::string					root;
+		std::string					upload;
+		std::string					index;
+		std::string					autoindex;
+		std::string					cgi;
+		std::string					redirection;
 
-        //getters
-        const std::vector<std::string>& getMethod() const;
-        const std::string&  getRoot() const;
-        const std::string&  getUpload() const;
-        const std::string&  getAutoindex() const;
-        const std::string&  getIndex() const;
-        const std::string&  getRedirection() const;
-        const std::string&  getLocation() const;
-        const std::string&  getCgi() const;
+	public:
+		Location();
+		Location(const Location& other);
+		Location& operator=(const Location& other);
+		~Location();
 
-        //setters
-        void setMethod(std::string , bool );
-        void setRoot(std::string& );
-        void setUpload(std::string& );
-        void setIndex(std::string& );
-        void setAutoindex(std::string& );
-        void setRedirection(std::string& );
-        void setLocation(std::string& );
-        void setCgi(std::string & );
+		void	clear();
 
-        void    clear();
+		// ----------------------------- Getters -----------------------------------
 
-        void printLocationInfo();
+		const std::string&				getLocation() const;
+		const std::vector<std::string>&	getMethod() const;
+		const std::string&				getRoot() const;
+		const std::string&				getUpload() const;
+		const std::string&				getIndex() const;
+		const std::string&				getAutoindex() const;
+		const std::string&				getCgi() const;
+		const std::string&				getRedirection() const;
 
-        private:
-            /* data */
-            std::string location_path;
-            std::vector<std::string> method;
-            std::string root;
-            std::string upload;
-            std::string autoindex;
-            std::string index;
-            std::string redirection;
-            std::string cgi;
-    };
+		// ----------------------------- Setters -----------------------------------
 
-#endif
+		void	setLocation(std::string&);
+		void	setMethod(std::string, bool);
+		void	setRoot(std::string&);
+		void	setUpload(std::string&);
+		void	setIndex(std::string&);
+		void	setAutoindex(std::string&);
+		void	setCgi(std::string&);
+		void	setRedirection(std::string&);
+
+		// ----------------------------- Methodes -----------------------------------
+
+		void	printLocationInfo();
+};

@@ -20,7 +20,7 @@ class ConfigServer
 		ConfigServer();
 		ConfigServer(std::string, std::string, std::string, std::vector<Location>, std::map<short, std::string>, unsigned long);
 		ConfigServer(const ConfigServer&);
-		ConfigServer & operator=(const ConfigServer&);
+		ConfigServer& operator=(const ConfigServer&);
 		~ConfigServer();
 
 		void	clear();
