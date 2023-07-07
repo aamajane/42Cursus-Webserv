@@ -38,14 +38,14 @@ void	Client::setLastMsgTime(time_t time) { this->lastMsgTime = time; }
 
 // ----------------------------- Methodes -----------------------------------
 
-void	Client::updateTime()
-{
-	this->setLastMsgTime(time(NULL));
-}
-
 void	Client::buildResponse()
 {
 	this->response.setConfigServer(this->server);
 	this->response.setRequest(this->request);
 	this->response.buildResponse();
+}
+
+void	Client::updateTime()
+{
+	this->setLastMsgTime(time(NULL));
 }
