@@ -1,5 +1,4 @@
-#ifndef RESPONSE_HPP
-#define RESPONSE_HPP
+#pragma once
 
 #include "../webserv.hpp"
 #include "../request/Request.hpp"
@@ -96,5 +95,3 @@ class Response
 		void	handleCGI();
 		void	handleCGIStatusCode();
 };
-
-#endif
