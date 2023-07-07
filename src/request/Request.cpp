@@ -292,7 +292,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 501;
-					return ;
+					return;
 				}
 				if ((size_t) this->methodIndex == this->methodsString[this->Method].length())
 					this->State = Request_Line_First_Space;
@@ -303,7 +303,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != ' ')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_URI_Path_Slash;
 				continue;
@@ -318,7 +318,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				break;
 			}
@@ -351,12 +351,12 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else if (checkUriCharacters(c))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				else if (this->indexBuffer > MAX_URI_LENGTH)
 				{
 					this->errorCode = 414;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -372,12 +372,12 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else if (errorCharQuery(c))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				else if (this->indexBuffer > MAX_URI_LENGTH)
 				{
 					this->errorCode = 414;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -386,12 +386,12 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (errorPath(this->Path))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				if (this->c != 'H')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_HT;
 				break ;
@@ -401,7 +401,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != 'T')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_HTT;
 				break ;
@@ -411,7 +411,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != 'T')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_HTTP;
 				break ;
@@ -421,7 +421,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != 'P')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_HTTP_Slash;
 				break ;
@@ -431,7 +431,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '/')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_Major;
 				break ;
@@ -441,7 +441,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (!isdigit(c))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->verMajor = c;
 				if (this->verMajor > '1')
@@ -456,7 +456,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '.')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_Minor;
 				break ;
@@ -466,7 +466,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (!isdigit(c))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->verMinor = c;
 				if (this->verMinor > '1')
@@ -481,7 +481,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '\r')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Request_Line_LF;
 				break;
@@ -491,7 +491,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '\n')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Field_Name_Start;
 				this->Storage.clear();
@@ -506,7 +506,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -536,7 +536,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -552,7 +552,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else if (!checkIsToken(c))
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -580,7 +580,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				break ;
 			}
@@ -589,7 +589,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (isxdigit(c) == 0)
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				str.str("");
 				str.clear();
@@ -626,7 +626,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				continue ;
 			}
@@ -642,7 +642,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				continue ;
 			}
@@ -667,7 +667,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				continue ;
 			}
@@ -678,7 +678,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				else
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				continue ;
 			}
@@ -687,7 +687,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '\r')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Chunked_End_LF;
 				continue ;
@@ -697,7 +697,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 				if (this->c != '\n')
 				{
 					this->errorCode = 400;
-					return ;
+					return;
 				}
 				this->State = Parsing_Done;
 				continue ;
@@ -713,7 +713,7 @@ void	Request::readBufferFromReq(char * buffer, int readBytes)
 			}
 			case Parsing_Done:
 			{
-				return ;
+				return;
 			}
 		}
 		this->Storage += c;
