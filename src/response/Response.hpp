@@ -24,7 +24,8 @@ class Response
 		int				status;
 
     public:
-		static MimeTypes mime_type;
+		static MimeTypes	mime_type;
+
         Response();
         ~Response();
 
