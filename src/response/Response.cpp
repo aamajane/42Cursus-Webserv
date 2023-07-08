@@ -202,7 +202,7 @@ void	Response::buildResponseContent()
 
 void	Response::isLocationMatched()
 {
-	std::vector<Location >	locations = this->server.getLocationList();
+	std::vector<Location>	locations = this->server.getLocationList();
 	std::string				requestedLocation = this->request.getPath();
 	bool					isMatched = false;
 
